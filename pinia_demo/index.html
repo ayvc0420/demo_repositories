@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大量變更</title>
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+
+    <div id="app" v-cloak>
+        <div>main每 2 秒遞增 : {{tRef}}</div>
+        <hr>
+        <ul>
+            <li>
+                <span>直接讀取 pinia : </span>
+                <span>{{ bulkChangeRef }}</span>
+            </li>
+            <li>
+                <span>指向 pinia 物件的 ref </span>
+                <span>{{ bulkChangeRef2 }}</span>
+            </li>
+        </ul>
+        <hr>
+        <demo-template></demo-template>
+    </div>
+
+
+    <script src="./js/vue.global.prod.js"></script> <!-- 僅供 vue-demi 使用 .js內使用仍以 esm 為主-->
+
+    <script src="./js/index.iife.min.js"></script> <!-- vue-demi -->
+    <script>const vueDemi = VueDemi;</script>
+
+    <script src="./js/pinia.iife.js"></script>
+
+    <script type="module" src="./js/main.js"></script>
+
+</body>
+</html>
