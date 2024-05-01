@@ -1,5 +1,6 @@
 // import { createPinia,setActivePinia } from './pinia.iife.js';
-import { createApp, onMounted, ref, reactive, computed, inject, watch } from "./vue3.4.21_esm.js"; 
+// import { createApp, onMounted, ref, reactive, computed, inject, watch } from "./vue3.4.21_esm.js"; 
+const { createApp, ref, onMounted } = Vue
 import { useBulkChangeStore } from "./piniaStore.js";
 import Demo from './ConditionArea.js';
 
@@ -7,7 +8,7 @@ const { createPinia } = Pinia;
 const pinia = createPinia();
 
 const app = createApp({
-    setup(){
+    setup() {
 
         const bulkChangeStore = useBulkChangeStore();
         const bulkChangeRef = ref();
@@ -17,13 +18,13 @@ const app = createApp({
             bulkChangeStore.bulkChangeRef.data = '5秒後你會看到我，是 main 修改了 pinia 的值';
             bulkChangeRef2.value = '5秒後你會看到我，是 main 修改了 bulkChangeRef2 的值';
         }, 5000);
-        
+
         const tRef = ref(0);
 
         setInterval(() => {
             tRef.value += 1;
         }, 2000);
-        
+
         onMounted(() => {
             bulkChangeRef.value = bulkChangeStore.bulkChangeRef;
             bulkChangeRef2.value = bulkChangeStore.bulkChangeRef.data;
@@ -31,7 +32,7 @@ const app = createApp({
             top.bulkChangeStore = bulkChangeStore
         })
 
-        return{
+        return {
             tRef,
             bulkChangeRef,
             bulkChangeRef2
